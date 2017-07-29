@@ -5,6 +5,12 @@ import javax.ws.rs.core.MultivaluedMap;
 import com.bote.delibeery.exception.RequiredFieldException;
 import com.bote.delibeery.util.StringUtil;
 
+/**
+ * DTO class for updating customer information.
+ *
+ * @author MarkS
+ *
+ */
 public class UpdateCustomerDTO extends CustomerDTO {
 
 	/**
@@ -13,10 +19,8 @@ public class UpdateCustomerDTO extends CustomerDTO {
 	 * @param queryParams
 	 * @throws RequiredFieldException
 	 */
-	public UpdateCustomerDTO(MultivaluedMap<String, String> queryParams)
-			throws RequiredFieldException {
-		setId(StringUtil.isNullOrBlank(queryParams.getFirst("id")) ? 0L : Long
-				.parseLong(queryParams.getFirst("id")));
+	public UpdateCustomerDTO(MultivaluedMap<String, String> queryParams) throws RequiredFieldException {
+		setId(StringUtil.isNullOrBlank(queryParams.getFirst("id")) ? 0L : Long.parseLong(queryParams.getFirst("id")));
 		setFirstName(queryParams.getFirst("firstName"));
 		setLastName(queryParams.getFirst("lastName"));
 		setEmailAddress(queryParams.getFirst("emailAddress"));
