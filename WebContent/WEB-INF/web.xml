@@ -16,6 +16,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Jersey Web Application</servlet-name>
-    <url-pattern>/bote/*</url-pattern>
+    <url-pattern>/delibeery/*</url-pattern>
   </servlet-mapping>
 </web-app>

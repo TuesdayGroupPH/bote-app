@@ -1,4 +1,4 @@
-package com.bote.tuesdaygroup.util;
+package com.bote.delibeery.util;
 
 /**
  * String utility class.

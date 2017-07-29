@@ -1,11 +1,17 @@
-package com.bote.tuesdaygroup.dto;
+package com.bote.delibeery.dto;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.bote.tuesdaygroup.exception.RequiredFieldException;
+import com.bote.delibeery.exception.RequiredFieldException;
 
+/**
+ * This is the base class of DTOs.
+ *
+ * @author MarkS
+ *
+ */
 public abstract class BaseDTO {
 
 	protected List<String> messages = new ArrayList<>();
@@ -15,7 +21,7 @@ public abstract class BaseDTO {
 	 *
 	 * @throws RequiredFieldException
 	 */
-	public void checkReuiredFields() throws RequiredFieldException {
+	public void checkRequiredFields() throws RequiredFieldException {
 		// check if any required fields are missing
 		if (isRequiredFieldMissing()) {
 

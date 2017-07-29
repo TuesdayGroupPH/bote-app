@@ -1,4 +1,4 @@
-package com.bote.tuesdaygroup.exception;
+package com.bote.delibeery.exception;
 
 
 /**

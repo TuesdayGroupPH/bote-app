@@ -1,4 +1,4 @@
-package com.bote.tuesdaygroup.service;
+package com.bote.delibeery.service;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -9,10 +9,18 @@ import javax.ws.rs.core.UriInfo;
 
 import org.json.JSONObject;
 
-import com.bote.tuesdaygroup.dto.CustomerDTO;
-import com.bote.tuesdaygroup.dto.UpdateCustomerDTO;
-import com.bote.tuesdaygroup.exception.RequiredFieldException;
+import com.bote.delibeery.bus.CustomerBus;
+import com.bote.delibeery.bus.impl.CustomerBusImpl;
+import com.bote.delibeery.dto.CustomerDTO;
+import com.bote.delibeery.dto.UpdateCustomerDTO;
+import com.bote.delibeery.exception.RequiredFieldException;
 
+/**
+ * This is the service class that handles the update of a customer record.
+ *
+ * @author MarkS
+ *
+ */
 @Path("/updateCustomer")
 public class UpdateCustomerService {
 
@@ -23,10 +31,10 @@ public class UpdateCustomerService {
 		JSONObject jsonObject = new JSONObject();
 
 		try {
-			CustomerDTO customerDTO = new UpdateCustomerDTO(
-					uriInfo.getQueryParameters());
+			CustomerDTO customerDTO = new UpdateCustomerDTO(uriInfo.getQueryParameters());
 
-			// TODO: update the customer
+			CustomerBus bus = new CustomerBusImpl();
+			bus.updateCustomer(customerDTO);
 
 			// convert DTO to JSON object
 			JSONObject customerJsonObject = new JSONObject(customerDTO);

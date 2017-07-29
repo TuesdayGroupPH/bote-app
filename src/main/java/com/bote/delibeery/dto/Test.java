@@ -1,4 +1,4 @@
-package com.bote.tuesdaygroup.dto;
+package com.bote.delibeery.dto;
 
 public class Test {
 

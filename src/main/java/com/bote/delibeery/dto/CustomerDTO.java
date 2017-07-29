@@ -1,4 +1,4 @@
-package com.bote.tuesdaygroup.dto;
+package com.bote.delibeery.dto;
 
 /**
  * DTO class for customer information.
