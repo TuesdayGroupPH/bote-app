@@ -3,8 +3,9 @@
 	<persistence-unit name="default"  transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		
-		<class>com.bote.delibeery.entity.CustomerEntity</class>
 		<class>com.bote.delibeery.entity.ItemEntity</class>
+		<class>com.bote.delibeery.entity.CustomerEntity</class>
+		<class>com.bote.delibeery.entity.AddressEntity</class>
 		
 		<properties>
 			<property name="eclipselink.logging.level" value="FINE"/>

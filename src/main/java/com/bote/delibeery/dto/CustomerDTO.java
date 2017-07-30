@@ -1,10 +1,39 @@
 package com.bote.delibeery.dto;
 
+import javax.ws.rs.core.MultivaluedMap;
+
+import com.bote.delibeery.exception.RequiredFieldException;
+import com.bote.delibeery.util.StringUtil;
+
 /**
  * DTO class for customer information.
  *
  */
 public class CustomerDTO extends BaseDTO {
+
+	/**
+	 * Empty constructor.
+	 *
+	 */
+	public CustomerDTO() {
+	}
+
+	/**
+	 * Constructor that initializes the values of the DTO.
+	 *
+	 * @param queryParams
+	 * @throws RequiredFieldException
+	 */
+	public CustomerDTO(MultivaluedMap<String, String> queryParams) throws RequiredFieldException {
+		setId(StringUtil.isNullOrBlank(queryParams.getFirst("id")) ? 0L : Long.parseLong(queryParams.getFirst("id")));
+		setFirstName(queryParams.getFirst("firstName"));
+		setLastName(queryParams.getFirst("lastName"));
+		setEmailAddress(queryParams.getFirst("emailAddress"));
+		setContactNumber(queryParams.getFirst("contactNumber"));
+
+		// checks if all required fields are submitted, throws exception if not
+		checkRequiredFields();
+	}
 
 	private long id;
 	private String firstName;

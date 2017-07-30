@@ -9,14 +9,20 @@ import javax.ws.rs.core.UriInfo;
 
 import org.json.JSONObject;
 
-import com.bote.delibeery.bus.CustomerBus;
-import com.bote.delibeery.bus.impl.CustomerBusImpl;
-import com.bote.delibeery.dto.CustomerDTO;
-import com.bote.delibeery.dto.RegisterCustomerDTO;
+import com.bote.delibeery.bus.AddressBus;
+import com.bote.delibeery.bus.impl.AddressBusImpl;
+import com.bote.delibeery.dto.AddAddressDTO;
+import com.bote.delibeery.dto.AddressDTO;
 import com.bote.delibeery.exception.RequiredFieldException;
 
-@Path("/registerCustomer")
-public class RegisterCustomerService {
+/**
+ * This is the service class for adding an address record.
+ *
+ * @author MarkS
+ *
+ */
+@Path("/addAddress")
+public class AddAddressService {
 
 	@GET
 	@Produces("application/json")
@@ -25,13 +31,13 @@ public class RegisterCustomerService {
 		JSONObject jsonObject = new JSONObject();
 
 		try {
-			CustomerDTO customerDTO = new RegisterCustomerDTO(uriInfo.getQueryParameters());
+			AddressDTO addressDTO = new AddAddressDTO(uriInfo.getQueryParameters());
 
-			CustomerBus bus = new CustomerBusImpl();
-			customerDTO = bus.createCustomer(customerDTO);
+			AddressBus bus = new AddressBusImpl();
+			addressDTO = bus.addAddress(addressDTO);
 
 			// convert DTO to JSON object
-			JSONObject customerJsonObject = new JSONObject(customerDTO);
+			JSONObject customerJsonObject = new JSONObject(addressDTO);
 			jsonObject.put("customer", customerJsonObject);
 
 		} catch (RequiredFieldException rfe) {
@@ -42,4 +48,5 @@ public class RegisterCustomerService {
 
 		return Response.status(200).entity(jsonObject.toString()).build();
 	}
+
 }

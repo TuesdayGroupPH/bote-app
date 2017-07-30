@@ -17,20 +17,13 @@ public class RegisterCustomerDTO extends CustomerDTO {
 	 * @param queryParams
 	 * @throws RequiredFieldException
 	 */
-	public RegisterCustomerDTO(MultivaluedMap<String, String> queryParams)
-			throws RequiredFieldException {
-		setFirstName(queryParams.getFirst("firstName"));
-		setLastName(queryParams.getFirst("lastName"));
-		setEmailAddress(queryParams.getFirst("emailAddress"));
-		setContactNumber(queryParams.getFirst("contactNumber"));
-
-		// checks if all required fields are submitted, throws exception if not
-		checkRequiredFields();
+	public RegisterCustomerDTO(MultivaluedMap<String, String> queryParams) throws RequiredFieldException {
+		super(queryParams);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see com.bote.tuesdaygroup.dto.CustomerDTO#isRequiredFieldMissing()
 	 */
 	@Override

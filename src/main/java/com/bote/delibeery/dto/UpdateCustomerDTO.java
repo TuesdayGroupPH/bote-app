@@ -20,14 +20,7 @@ public class UpdateCustomerDTO extends CustomerDTO {
 	 * @throws RequiredFieldException
 	 */
 	public UpdateCustomerDTO(MultivaluedMap<String, String> queryParams) throws RequiredFieldException {
-		setId(StringUtil.isNullOrBlank(queryParams.getFirst("id")) ? 0L : Long.parseLong(queryParams.getFirst("id")));
-		setFirstName(queryParams.getFirst("firstName"));
-		setLastName(queryParams.getFirst("lastName"));
-		setEmailAddress(queryParams.getFirst("emailAddress"));
-		setContactNumber(queryParams.getFirst("contactNumber"));
-
-		// checks if all required fields are submitted, throws exception if not
-		checkRequiredFields();
+		super(queryParams);
 	}
 
 	@Override

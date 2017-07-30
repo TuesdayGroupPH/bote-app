@@ -1,7 +1,5 @@
 package com.bote.delibeery.dto;
 
-import java.math.BigDecimal;
-
 import javax.ws.rs.core.MultivaluedMap;
 
 import com.bote.delibeery.exception.RequiredFieldException;
@@ -15,15 +13,14 @@ import com.bote.delibeery.util.StringUtil;
  */
 public class AddItemDTO extends ItemDTO {
 
+	/**
+	 * Constructor that would check if all the required fields are submitted.
+	 *
+	 * @param queryParams
+	 * @throws RequiredFieldException
+	 */
 	public AddItemDTO(MultivaluedMap<String, String> queryParams) throws RequiredFieldException {
-		setCode(queryParams.getFirst("code"));
-		setDescription(queryParams.getFirst("description"));
-		if (!StringUtil.isNullOrBlank(queryParams.getFirst("unitPrice"))) {
-			setUnitPrice(new BigDecimal(queryParams.getFirst("unitPrice")));
-		}
-
-		// check if any required field is missing
-		checkRequiredFields();
+		super(queryParams);
 	}
 
 	@Override

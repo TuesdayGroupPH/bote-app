@@ -44,42 +44,77 @@ public class CustomerEntity implements Serializable {
 		super();
 	}
 
+	/**
+	 * @return the id
+	 */
 	public long getId() {
-		return this.id;
+		return id;
 	}
 
+	/**
+	 * @param id
+	 *            the id to set
+	 */
 	public void setId(long id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return the firstName
+	 */
 	public String getFirstName() {
-		return this.firstName;
+		return firstName;
 	}
 
+	/**
+	 * @param firstName
+	 *            the firstName to set
+	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
+	/**
+	 * @return the lastName
+	 */
 	public String getLastName() {
-		return this.lastName;
+		return lastName;
 	}
 
+	/**
+	 * @param lastName
+	 *            the lastName to set
+	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
+	/**
+	 * @return the emailAddress
+	 */
 	public String getEmailAddress() {
-		return this.emailAddress;
+		return emailAddress;
 	}
 
+	/**
+	 * @param emailAddress
+	 *            the emailAddress to set
+	 */
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
 	}
 
+	/**
+	 * @return the contactNumber
+	 */
 	public String getContactNumber() {
-		return this.contactNumber;
+		return contactNumber;
 	}
 
+	/**
+	 * @param contactNumber
+	 *            the contactNumber to set
+	 */
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
