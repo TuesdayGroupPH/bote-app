@@ -1,13 +1,18 @@
 package com.bote.delibeery.service;
 
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import org.json.JSONObject;
 
+import com.bote.delibeery.bus.ItemBus;
+import com.bote.delibeery.bus.impl.ItemBusImpl;
 import com.bote.delibeery.dto.AddItemDTO;
+import com.bote.delibeery.dto.ItemDTO;
 import com.bote.delibeery.exception.RequiredFieldException;
 
 /**
@@ -19,12 +24,17 @@ import com.bote.delibeery.exception.RequiredFieldException;
 @Path("/addItem")
 public class AddItemService {
 
+	@GET
+	@Produces("application/json")
 	public Response addItem(@Context UriInfo uriInfo) {
 
 		JSONObject jsonObject = new JSONObject();
 
 		try {
-			AddItemDTO itemDTO = new AddItemDTO(uriInfo.getQueryParameters());
+			ItemDTO itemDTO = new AddItemDTO(uriInfo.getQueryParameters());
+
+			ItemBus bus = new ItemBusImpl();
+			itemDTO = bus.addItem(itemDTO);
 
 			// convert DTO to JSON object
 			JSONObject itemJsonObject = new JSONObject(itemDTO);
