@@ -5,6 +5,7 @@ import com.bote.delibeery.dao.CustomerDAO;
 import com.bote.delibeery.dto.CustomerDTO;
 import com.bote.delibeery.entity.CustomerEntity;
 import com.bote.delibeery.exception.RecordNotFoundException;
+import com.bote.delibeery.type.LoginType;
 
 /**
  * This is the business class implementation of the Customer.
@@ -38,10 +39,12 @@ public class CustomerBusImpl implements CustomerBus {
 			throw new RecordNotFoundException("Customer record not found with id " + String.valueOf(dto.getId()));
 		}
 
-		entity.setFirstName(dto.getFirstName());
-		entity.setLastName(dto.getLastName());
-		entity.setEmailAddress(dto.getEmailAddress());
+		entity.setLoginId(dto.getLoginId());
+		entity.setName(dto.getName());
+		entity.setEmail(dto.getEmail());
+		entity.setPhotoUrl(dto.getPhotoUrl());
 		entity.setContactNumber(dto.getContactNumber());
+		entity.setLoginType(LoginType.valueOf(dto.getType()));
 		customerDAO.update(entity);
 		return convertEntityToDTO(entity);
 	}
@@ -49,10 +52,12 @@ public class CustomerBusImpl implements CustomerBus {
 	@Override
 	public CustomerEntity convertDTOToEntity(CustomerDTO dto) {
 		CustomerEntity entity = new CustomerEntity();
-		entity.setFirstName(dto.getFirstName());
-		entity.setLastName(dto.getLastName());
-		entity.setEmailAddress(dto.getEmailAddress());
+		entity.setLoginId(dto.getLoginId());
+		entity.setName(dto.getName());
+		entity.setEmail(dto.getEmail());
+		entity.setPhotoUrl(dto.getPhotoUrl());
 		entity.setContactNumber(dto.getContactNumber());
+		entity.setLoginType(LoginType.valueOf(dto.getType()));
 		return entity;
 	}
 
@@ -60,10 +65,12 @@ public class CustomerBusImpl implements CustomerBus {
 	public CustomerDTO convertEntityToDTO(CustomerEntity entity) {
 		CustomerDTO dto = new CustomerDTO();
 		dto.setId(entity.getId());
-		dto.setFirstName(entity.getFirstName());
-		dto.setLastName(entity.getLastName());
-		dto.setEmailAddress(entity.getEmailAddress());
+		dto.setLoginId(entity.getLoginId());
+		dto.setName(entity.getName());
+		dto.setEmail(entity.getEmail());
+		dto.setPhotoUrl(entity.getPhotoUrl());
 		dto.setContactNumber(entity.getContactNumber());
+		dto.setType(entity.getLoginType().toString());
 		return dto;
 	}
 

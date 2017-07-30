@@ -23,26 +23,30 @@ public class RegisterCustomerDTO extends CustomerDTO {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see com.bote.tuesdaygroup.dto.CustomerDTO#isRequiredFieldMissing()
 	 */
 	@Override
 	public boolean isRequiredFieldMissing() {
 		boolean reqFieldMissing = false;
-		if (StringUtil.isNullOrBlank(getFirstName())) {
-			messages.add("firstName");
+		if (StringUtil.isNullOrBlank(getLoginId())) {
+			messages.add("loginId");
 			reqFieldMissing = true;
 		}
-		if (StringUtil.isNullOrBlank(getLastName())) {
-			messages.add("lastName");
+		if (StringUtil.isNullOrBlank(getName())) {
+			messages.add("name");
 			reqFieldMissing = true;
 		}
-		if (StringUtil.isNullOrBlank(getEmailAddress())) {
-			messages.add("emailAddress");
+		if (StringUtil.isNullOrBlank(getEmail())) {
+			messages.add("email");
 			reqFieldMissing = true;
 		}
 		if (StringUtil.isNullOrBlank(getContactNumber())) {
 			messages.add("contactNumber");
+			reqFieldMissing = true;
+		}
+		if (StringUtil.isNullOrBlank(getType())) {
+			messages.add("type");
 			reqFieldMissing = true;
 		}
 

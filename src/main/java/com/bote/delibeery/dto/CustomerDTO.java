@@ -26,20 +26,24 @@ public class CustomerDTO extends BaseDTO {
 	 */
 	public CustomerDTO(MultivaluedMap<String, String> queryParams) throws RequiredFieldException {
 		setId(StringUtil.isNullOrBlank(queryParams.getFirst("id")) ? 0L : Long.parseLong(queryParams.getFirst("id")));
-		setFirstName(queryParams.getFirst("firstName"));
-		setLastName(queryParams.getFirst("lastName"));
-		setEmailAddress(queryParams.getFirst("emailAddress"));
+		setLoginId(queryParams.getFirst("loginId"));
+		setName(queryParams.getFirst("name"));
+		setEmail(queryParams.getFirst("email"));
 		setContactNumber(queryParams.getFirst("contactNumber"));
+		setPhotoUrl(queryParams.getFirst("photoUrl"));
+		setType(queryParams.getFirst("type"));
 
 		// checks if all required fields are submitted, throws exception if not
 		checkRequiredFields();
 	}
 
 	private long id;
-	private String firstName;
-	private String lastName;
-	private String emailAddress;
+	private String loginId;
+	private String name;
+	private String email;
 	private String contactNumber;
+	private String photoUrl;
+	private String type;
 
 	/**
 	 * @return the id
@@ -57,48 +61,48 @@ public class CustomerDTO extends BaseDTO {
 	}
 
 	/**
-	 * @return the firstName
+	 * @return the loginId
 	 */
-	public String getFirstName() {
-		return firstName;
+	public String getLoginId() {
+		return loginId;
 	}
 
 	/**
-	 * @param firstName
-	 *            the firstName to set
+	 * @param loginId
+	 *            the loginId to set
 	 */
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
 	}
 
 	/**
-	 * @return the lastName
+	 * @return the name
 	 */
-	public String getLastName() {
-		return lastName;
+	public String getName() {
+		return name;
 	}
 
 	/**
-	 * @param lastName
-	 *            the lastName to set
+	 * @param name
+	 *            the name to set
 	 */
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**
-	 * @return the emailAddress
+	 * @return the email
 	 */
-	public String getEmailAddress() {
-		return emailAddress;
+	public String getEmail() {
+		return email;
 	}
 
 	/**
-	 * @param emailAddress
-	 *            the emailAddress to set
+	 * @param email
+	 *            the email to set
 	 */
-	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	/**
@@ -114,6 +118,36 @@ public class CustomerDTO extends BaseDTO {
 	 */
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
+	}
+
+	/**
+	 * @return the photoUrl
+	 */
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
+
+	/**
+	 * @param photoUrl
+	 *            the photoUrl to set
+	 */
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
+	}
+
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return type;
+	}
+
+	/**
+	 * @param type
+	 *            the type to set
+	 */
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	@Override
