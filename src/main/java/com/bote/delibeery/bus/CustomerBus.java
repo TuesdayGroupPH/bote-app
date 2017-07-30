@@ -2,6 +2,7 @@ package com.bote.delibeery.bus;
 
 import com.bote.delibeery.dto.CustomerDTO;
 import com.bote.delibeery.entity.CustomerEntity;
+import com.bote.delibeery.exception.RecordNotFoundException;
 
 /**
  * This is the interface for the Customer business implementation.
@@ -24,7 +25,8 @@ public interface CustomerBus extends BaseBus<CustomerDTO, CustomerEntity> {
 	 *
 	 * @param dto
 	 * @return CustomerDTO
+	 * @throws RecordNotFoundException
 	 */
-	public CustomerDTO updateCustomer(CustomerDTO dto);
+	public CustomerDTO updateCustomer(CustomerDTO dto) throws RecordNotFoundException;
 
 }

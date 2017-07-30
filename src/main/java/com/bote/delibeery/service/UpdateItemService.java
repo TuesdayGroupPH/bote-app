@@ -9,37 +9,37 @@ import javax.ws.rs.core.UriInfo;
 
 import org.json.JSONObject;
 
-import com.bote.delibeery.bus.CustomerBus;
-import com.bote.delibeery.bus.impl.CustomerBusImpl;
-import com.bote.delibeery.dto.CustomerDTO;
-import com.bote.delibeery.dto.UpdateCustomerDTO;
+import com.bote.delibeery.bus.ItemBus;
+import com.bote.delibeery.bus.impl.ItemBusImpl;
+import com.bote.delibeery.dto.ItemDTO;
+import com.bote.delibeery.dto.UpdateItemDTO;
 import com.bote.delibeery.exception.RecordNotFoundException;
 import com.bote.delibeery.exception.RequiredFieldException;
 
 /**
- * This is the service class that handles the update of a customer record.
+ * This is the service class for updating an item record.
  *
  * @author MarkS
  *
  */
-@Path("/updateCustomer")
-public class UpdateCustomerService {
+@Path("/updateItem")
+public class UpdateItemService {
 
 	@GET
 	@Produces("application/json")
-	public Response updateCustomer(@Context UriInfo uriInfo) {
+	public Response updateItem(@Context UriInfo uriInfo) {
 
 		JSONObject jsonObject = new JSONObject();
 
 		try {
-			CustomerDTO customerDTO = new UpdateCustomerDTO(uriInfo.getQueryParameters());
+			ItemDTO itemDTO = new UpdateItemDTO(uriInfo.getQueryParameters());
 
-			CustomerBus bus = new CustomerBusImpl();
-			bus.updateCustomer(customerDTO);
+			ItemBus bus = new ItemBusImpl();
+			itemDTO = bus.updateItem(itemDTO);
 
 			// convert DTO to JSON object
-			JSONObject customerJsonObject = new JSONObject(customerDTO);
-			jsonObject.put("customer", customerJsonObject);
+			JSONObject itemJsonObject = new JSONObject(itemDTO);
+			jsonObject.put("item", itemJsonObject);
 
 		} catch (RequiredFieldException rfe) {
 			jsonObject.put("error", rfe.getMessage());

@@ -4,6 +4,7 @@ import com.bote.delibeery.bus.CustomerBus;
 import com.bote.delibeery.dao.CustomerDAO;
 import com.bote.delibeery.dto.CustomerDTO;
 import com.bote.delibeery.entity.CustomerEntity;
+import com.bote.delibeery.exception.RecordNotFoundException;
 
 /**
  * This is the business class implementation of the Customer.
@@ -31,15 +32,17 @@ public class CustomerBusImpl implements CustomerBus {
 	}
 
 	@Override
-	public CustomerDTO updateCustomer(CustomerDTO dto) {
+	public CustomerDTO updateCustomer(CustomerDTO dto) throws RecordNotFoundException {
 		CustomerEntity entity = customerDAO.findById(dto.getId());
-		if (entity != null) {
-			entity.setFirstName(dto.getFirstName());
-			entity.setLastName(dto.getLastName());
-			entity.setEmailAddress(dto.getEmailAddress());
-			entity.setContactNumber(dto.getContactNumber());
-			customerDAO.update(entity);
+		if (entity == null) {
+			throw new RecordNotFoundException("Customer record not found with id " + String.valueOf(dto.getId()));
 		}
+
+		entity.setFirstName(dto.getFirstName());
+		entity.setLastName(dto.getLastName());
+		entity.setEmailAddress(dto.getEmailAddress());
+		entity.setContactNumber(dto.getContactNumber());
+		customerDAO.update(entity);
 		return convertEntityToDTO(entity);
 	}
 
